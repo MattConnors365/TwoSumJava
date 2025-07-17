@@ -11,4 +11,21 @@ public class Complexities {
         }
         throw new Errors.NoSolutionException("No two sum solution");
     }
+
+    public static int[] OofN(int[] nums, int target) throws Errors.NoSolutionException {
+        java.util.HashMap<Integer, Integer> map = new java.util.HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target - nums[i])) {
+                int complement = target - nums[i];
+                if (map.containsKey(complement)) {
+                    return new int[] {map.get(complement), i};
+                }
+            } else {
+                map.put(nums[i], i);
+            }
+        }
+
+        throw new Errors.NoSolutionException("No two sum solution");
+    }
 }
